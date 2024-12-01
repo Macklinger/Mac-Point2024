@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modalidades</title>
+  <style>
+    /* Estilos gerais */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #FFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Quadro principal */
+    .quadro {
+      background-color: #013824;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    /* Quadro da capa */
+    .quadro-capa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .quadro-capa img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .quadro-capa h1 {
+      font-size: 24px;
+      color: #FFD700;
+    }
+
+    /* Botões */
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .botao {
+      background-color: #FF4500;
+      color: #FFF;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      background-color: #45a049;
+    }
+
+    /* Conteúdo das modalidades */
+    .conteudo {
+      margin-top: 20px;
+      display: none;
+      text-align: left;
+    }
+
+    .conteudo h1 {
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <!-- Quadro principal -->
+  <div class="quadro">
+    <!-- Capa -->
+    <div class="quadro-capa">
+      <img src="https://i.postimg.cc/c174K1j3/Screenshot-20241123-182344-1.jpg" alt="Modalidades">
+      <h1>Modalidades</h1>
+    </div>
+    <!-- Menu -->
+    <div class="menu">
+      <button class="botao" onclick="mostrarConteudo('mega-sena')">Mega Sena</button>
+      <button class="botao" onclick="mostrarConteudo('quina')">Quina</button>
+      <button class="botao" onclick="mostrarConteudo('dupla-sena')">Dupla Sena</button>
+      <button class="botao" onclick="mostrarConteudo('timemania')">Timemania</button>
+      <button class="botao" onclick="mostrarConteudo('lotofacil')">Lotofácil</button>
+      <button class="botao" onclick="mostrarConteudo('lotomania')">Lotomania</button>
+    </div>
+    <!-- Conteúdo das modalidades -->
+    <div id="conteudo" class="conteudo"></div>
+  </div>
+
+  <script>
+    // Função para exibir o conteúdo da modalidade selecionada
+    function mostrarConteudo(modalidade) {
+      const conteudoPaginas = {
+        'mega-sena': `
+          <h1>Mega Sena</h1>
+          <p><strong>Informações:</strong> A Mega Sena é a maior loteria do Brasil. Apostas a partir de R$ 4,50.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 2645 - 30/11/2024</p>
+          <p><strong>Resultado:</strong> 03, 09, 23, 36, 48, 52</p>
+        `,
+        'quina': `
+          <h1>Quina</h1>
+          <p><strong>Informações:</strong> Aposte entre 5 e 15 números. Sorteios diários.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 6245 - 30/11/2024</p>
+          <p><strong>Resultado:</strong> 07, 15, 27, 35, 49</p>
+        `,
+        'dupla-sena': `
+          <h1>Dupla Sena</h1>
+          <p><strong>Informações:</strong> Aposte entre 6 e 15 números e concorra a dois sorteios.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 2567 - 30/11/2024</p>
+          <p><strong>Resultado (1º Sorteio):</strong> 10, 22, 34, 40, 52, 60</p>
+          <p><strong>Resultado (2º Sorteio):</strong> 08, 17, 25, 30, 41, 50</p>
+        `,
+        'timemania': `
+          <h1>Timemania</h1>
+          <p><strong>Informações:</strong> Escolha 10 números e um time do coração. Sorteios terças, quintas e sábados.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 1980 - 30/11/2024</p>
+          <p><strong>Resultado:</strong> 05, 12, 18, 27, 39, 41, 59</p>
+          <p><strong>Time do Coração:</strong> Flamengo</p>
+        `,
+        'lotofacil': `
+          <h1>Lotofácil</h1>
+          <p><strong>Informações:</strong> Aposte 15 números entre 25 disponíveis. Sorteios diários.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 3060 - 30/11/2024</p>
+          <p><strong>Resultado:</strong> 01, 02, 05, 08, 11, 12, 13, 16, 18, 20, 21, 22, 23, 24, 25</p>
+        `,
+        'lotomania': `
+          <h1>Lotomania</h1>
+          <p><strong>Informações:</strong> Aposte 50 números e concorra com 100 possíveis.</p>
+          <p><strong>Último Sorteio:</strong> Concurso 2564 - 30/11/2024</p>
+          <p><strong>Resultado:</strong> 03, 07, 14, 22, 27, 30, 34, 39, 41, 45, 49, 53, 57, 61, 65, 68, 72, 76, 79, 80</p>
+        `
+      };
+
+      const conteudo = document.getElementById('conteudo');
+      conteudo.innerHTML = conteudoPaginas[modalidade] || "Modalidade não encontrada!";
+      conteudo.style.display = "block";
+    }
+  </script>
+</body>
+</html>
+
